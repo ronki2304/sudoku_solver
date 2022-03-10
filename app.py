@@ -57,7 +57,7 @@ class MainWindow(QMainWindow):
 		
 		hlayout.addWidget(self.button)
 
-		buttonClear=QPushButton("Clear")
+		buttonClear=QPushButton("Clear") 
 		buttonClear.clicked.connect(self.clear_grid)
 		hlayout.addWidget(buttonClear)
 		bwidget=QWidget()

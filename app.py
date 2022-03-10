@@ -17,17 +17,17 @@ class MainWindow(QMainWindow):
 		layout = QGridLayout()
 		self.word_length = 9
 
-		#self.numbers = ["5", "3", "", "", "7", "", "", "", "",
-		#				"6", "", "", "1", "9", "5", "", "", "",
-		#				"", "9", "8", "", "", "", "", "6", "",
-		#				"8", "", "", "", "6", "", "", "", "3",
-		#				"4", "", "", "8", "", "3", "", "", "1",
-		#				"7", "", "", "", "2", "", "", "", "6",
-		#				"", "6", "", "", "", "", "2", "8", "",
-		#				"", "", "", "4", "1", "9", "", "", "5",
-		#				"", "", "", "", "8", "", "", "7", "9"]
+		self.numbers = ["5", "3", "", "", "7", "", "", "", "",
+						"6", "", "", "1", "9", "5", "", "", "",
+						"", "9", "8", "", "", "", "", "6", "",
+						"8", "", "", "", "6", "", "", "", "3",
+						"4", "", "", "8", "", "3", "", "", "1",
+						"7", "", "", "", "2", "", "", "", "6",
+						"", "6", "", "", "", "", "2", "8", "",
+						"", "", "", "4", "1", "9", "", "", "5",
+						"", "", "", "", "8", "", "", "7", "9"]
 
-		self.numbers=["" for i in range(self.word_length*9)]
+		#self.numbers=["" for i in range(self.word_length*9)]
 
 		self.positions = [(i, j) for i in range(self.word_length) for j in range(9)]
 		
@@ -36,6 +36,7 @@ class MainWindow(QMainWindow):
 
 			ql = QLineEdit(number)
 			ql.setMaxLength(1)
+			ql.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 			ql.setStyleSheet(stylesheet)
 			ql.setValidator(QIntValidator())
@@ -74,18 +75,18 @@ class MainWindow(QMainWindow):
 	def clear_grid(self):
 		for position in self.positions:
 			self.widget.layout().itemAtPosition(*position).widget().setText("")
+			self.widget.layout().itemAtPosition(*position).widget().setStyleSheet(self.formatCell(position, "red"))
 
 	def formatCell(self, position, color):
 		stylesheet = "color: "+color+"; border: 2px solid;border-color: grey;"
-		if position[0] == 0:
+		if position[0] % 3==0:
 			stylesheet += " border-top-color: black;"
-		if position[0] == 8:
+		if position[0] % 3==2:
 			stylesheet += "border-bottom-color: black;"
 
-		if position[0] % 3 == 0:
-			stylesheet += "border-top-color: black;"
+		
 
-		if position[1] == 0:
+		if position[1] %3 == 0:
 			stylesheet += " border-left-color: black;"
 		if position[1] % 3 == 2:
 			stylesheet += " border-right-color:black; "

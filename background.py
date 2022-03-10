@@ -73,47 +73,7 @@ class worker(QObject):
 
 						#-------------------Square--------------------------
 
-							square0 = [work[0][0],work[0][1],work[0][2],
-							work[1][0],work[1][1],work[1][2],
-							work[2][0],work[2][1],work[2][2]]
-							square1=[work[0][3],work[0][4],work[0][5],
-							work[1][3],work[1][4],work[1][5],
-							work[2][3],work[2][4],work[2][5]]
-							square2=[work[0][6],work[0][7],work[0][8],
-							work[1][6],work[1][7],work[1][8],
-							work[2][6],work[2][7],work[2][8]]
-
-
-							square3 = [work[3][0],work[3][1],work[3][2],
-							work[4][0],work[4][1],work[4][2],
-							work[5][0],work[5][1],work[5][2]]
-							square4=[work[3][3],work[3][4],work[3][5],
-							work[4][3],work[4][4],work[4][5],
-							work[5][3],work[5][4],work[5][5]]
-							square5=[work[3][6],work[3][7],work[3][8],
-							work[4][6],work[4][7],work[4][8],
-							work[5][6],work[5][7],work[5][8]]
-
-
-							square6 = [work[6][0],work[6][1],work[6][2],
-							work[7][0],work[7][1],work[7][2],
-							work[8][0],work[8][1],work[8][2]]
-							square7=[work[6][3],work[6][4],work[6][5],
-							work[7][3],work[7][4],work[7][5],
-							work[8][3],work[8][4],work[8][5]]
-							square8=[work[6][6],work[6][7],work[6][8],
-							work[7][6],work[7][7],work[7][8],
-							work[8][6],work[8][7],work[8][8]]
-
-							if (x<3 and y<3 and str(value) not in square0 or
-								x<3 and y>=3 and y < 6 and str(value) not in square3 or
-								x<3 and y>=6 and str(value) not in square6 or
-								x>=3 and x<6 and y<3 and str(value) not in square1 or
-								x>=3 and x<6 and y>=3 and y<6 and str(value) not in square4 or
-								x>=3 and x<6 and y>=6 and str(value) not in square7 or
-								x>=6 and y<3 and str(value) not in square2 or
-								x>=6 and y>=3 and y<6 and str(value) not in square5 or
-								x>=6 and y>=6 and str(value) not in square8):
+							if (str(value) not in work[(y//3)*3:(y//3)*3+3,(x//3)*3:(x//3)*3+3]):
 								misc.log("everything is fine take value")
 								work[y][x] = str(value)
 								self.progress.emit(x,y,value)

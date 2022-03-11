@@ -53,4 +53,3 @@ to run it simply run `python app.py`
 
 * possibility to change the grid size
 * change the color
-* 

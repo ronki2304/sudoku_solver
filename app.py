@@ -78,16 +78,16 @@ class MainWindow(QMainWindow):
 			self.widget.layout().itemAtPosition(*position).widget().setStyleSheet(self.formatCell(position, "red"))
 
 	def formatCell(self, position, color):
-		stylesheet = "background: white; color: "+color+"; border: 2px solid;"
+		stylesheet = "background: white; color: "+color+"; border: 2px solid; border-color: grey;"
 		if position[0] % 3==0:
-			stylesheet += " border-top-color: rgb(73,73,73);"
+			stylesheet += " border-top-color: blue;"
 		if position[0] % 3==2:
-			stylesheet += "border-bottom-color: rgb(73,73,73);"		
+			stylesheet += "border-bottom-color: blue;"		
 
 		if position[1] %3 == 0:
-			stylesheet += " border-left-color: rgb(73,73,73);"
+			stylesheet += " border-left-color: blue;"
 		if position[1] % 3 == 2:
-			stylesheet += " border-right-color:rgb(73,73,73); "
+			stylesheet += " border-right-color:blue; "
 		return stylesheet
 
 	def solve_sudoku(self):
